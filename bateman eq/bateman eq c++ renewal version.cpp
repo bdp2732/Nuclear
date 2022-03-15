@@ -39,22 +39,22 @@ int main()
 
     }
 
-    ofstream os;
-    os.open("data.txt");
+    std::ofstream os;
+    os.open("data1.txt");
     for(int j=0;j<20000;++j){
-        os<<marr1[0] [j]<<"\t"<<marr1[1] [j]<<"\r"<<endl;
+        os<<marr1[0] [j]<<"\t"<<marr1[1] [j]<<"\r"<<std::endl;
         }
 
     os.close();
     os.open("data2.txt");
     for(int j=0;j<20000;++j){
-        os<<marr2[0] [j]<<"\t"<<marr2[1] [j]<<"\r"<<endl;
+        os<<marr2[0] [j]<<"\t"<<marr2[1] [j]<<"\r"<<std::endl;
     }
 
     os.close();
     os.open("data3.txt");
     for(int j=0;j<20000;++j){
-        os<<marr3[0] [j]<<"\t"<<marr3[1] [j]<<"\r"<<endl;
+        os<<marr3[0] [j]<<"\t"<<marr3[1] [j]<<"\r"<<std::endl;
     }
 
     os.close();
