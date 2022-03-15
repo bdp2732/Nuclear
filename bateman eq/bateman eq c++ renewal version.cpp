@@ -41,7 +41,7 @@ int main()
     }
 
     ofstream os;
-    os.open("data1.txt");
+    os.open("data.txt");
     for(int j=0;j<20000;++j){
         os<<marr1[0] [j]<<"\t"<<marr1[1] [j]<<"\r"<<endl;
         }
