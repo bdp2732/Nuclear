@@ -1,0 +1,86 @@
+void tut2()
+{ 
+	auto c3 = new TCanvas("c3","c3",600, 400);
+
+	auto mg = new TMultiGraph("mg","mg");
+	const Int_t size = 10;
+	auto gr = new TGraph(  );
+	auto gr1 = new TGraph(  );
+	auto gr2 = new TGraph(  );
+	auto gr3 = new TGraph( );
+  	gr1->SetTitle("N1");
+  	gr2->SetTitle("N2");
+  	gr3->SetTitle("N3");
+   	gr1->SetLineColor(2);
+ 	gr1->SetFillStyle(0);
+   	gr1->SetLineColor(2);
+  	gr1->SetLineWidth(2);
+ 	gr1->SetFillStyle(3);
+   	gr2->SetLineColor(3);
+  	gr2->SetLineWidth(2);
+  	gr2->SetFillStyle(0);
+  	gr3->SetLineColor(4);
+  	gr3->SetLineWidth(2);
+  	gr3->SetFillStyle(0);
+	gr1->SetMarkerStyle(21);
+	gr2->SetMarkerStyle(21);
+	gr3->SetMarkerStyle(21);
+	gr1->SetDrawOption("AP");
+	gr1->SetDrawOption("P");
+ 	gr1->SetMarkerColor(2);
+  	gr1->SetMarkerColor(3);
+   	gr1->SetMarkerColor(4);
+   	gr1->SetMarkerSize(0);
+   	gr2->SetMarkerSize(0); 
+   	gr3->SetMarkerSize(0);
+	fstream file;
+	file.open("data2.txt", ios::in);
+	while(1)
+	{
+	
+		double x, y;
+		file >> x >> y;
+		gr1 ->SetPoint(gr1->GetN(), x, y);
+		if(file.eof()) break;
+	
+	
+	}
+	
+	file.close();
+
+	file.open("data.txt", ios::in);	
+		while(1)
+	{
+	
+		double x, y;
+		file >> x >> y;
+		gr2 ->SetPoint(gr2->GetN(), x, y);
+		if(file.eof()) break;
+	
+	
+	}
+	file.close();
+
+	file.open("data3.txt", ios::in);
+		while(1)
+	{
+	
+		double x, y;
+		file >> x >> y;
+		gr3 ->SetPoint(gr3->GetN(), x, y);
+		if(file.eof()) break;
+	
+	
+	}
+	file.close(); 
+	
+	
+ 
+ 
+   	mg->Add(gr1);
+	mg->Add(gr2);
+	gr3->Draw("ALP");
+   	mg->Draw("LP");
+	c3->BuildLegend();
+	
+}  
