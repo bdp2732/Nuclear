@@ -1,4 +1,4 @@
-void tut2()
+void bateman()
 { 
 	auto c3 = new TCanvas("c3","c3",600, 400);
 
@@ -34,7 +34,8 @@ void tut2()
    	gr2->SetMarkerSize(0); 
    	gr3->SetMarkerSize(0);
 	fstream file;
-	file.open("data2.txt", ios::in);
+
+	file.open("data1.txt", ios::in);
 	while(1)
 	{
 	
@@ -48,7 +49,7 @@ void tut2()
 	
 	file.close();
 
-	file.open("data.txt", ios::in);	
+	file.open("data2.txt", ios::in);	
 		while(1)
 	{
 	
