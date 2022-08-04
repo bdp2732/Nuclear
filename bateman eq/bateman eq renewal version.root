@@ -1,0 +1,109 @@
+#include "TCanvas.h"
+#include "TROOT.h"
+#include "TGraphErrors.h"
+#include "TF1.h"
+#include "TLegend.h"
+#include "TArrow.h"
+#include "TLatex.h"
+
+void bateman()
+{ 
+
+	auto gr1 = new TGraph(  );
+	auto gr2 = new TGraph(  );
+	auto gr3 = new TGraph(  );
+	TCanvas *c1 = new TCanvas("c3","Bateman Equation",600, 400);
+	c1->SetGrid();
+
+
+	TMultiGraph *mg = new TMultiGraph();
+
+	const Int_t n1 = 10;
+
+	fstream file;
+
+	file.open("data1.txt", ios::in);
+	while(1)
+	{
+	
+		double x, y;
+		file >> x >> y;
+		gr1 ->SetPoint(gr1->GetN(), x, y);
+		if(file.eof()) break;
+	
+	
+	}
+	
+	file.close();
+
+   	gr1->SetLineColor(2);
+ 	gr1->SetFillStyle(0);
+   	gr1->SetLineColor(2);
+  	gr1->SetLineWidth(2);
+ 	gr1->SetFillStyle(3);
+	gr1->SetMarkerStyle(21);
+	gr1->SetMarkerSize(0);
+	mg->Add(gr1);
+
+	const Int_t n2 =10;
+
+	file.open("data2.txt", ios::in);	
+		while(1)
+	{
+	
+		double x, y;
+		file >> x >> y;
+		gr2 ->SetPoint(gr2->GetN(), x, y);
+		if(file.eof()) break;
+	
+	
+	}
+	file.close();
+
+   	gr2->SetLineColor(3);
+  	gr2->SetLineWidth(2);
+  	gr2->SetFillStyle(0);
+	gr2->SetMarkerStyle(21);
+	gr2->SetMarkerSize(0);
+	mg->Add(gr2);
+
+	const Int_t n3 =10;
+
+	file.open("data3.txt", ios::in);
+		while(1)
+	{
+	
+		double x, y;
+		file >> x >> y;
+		gr3 ->SetPoint(gr3->GetN(), x, y);
+		if(file.eof()) break;
+	
+	
+	}
+	file.close(); 
+
+  	gr3->SetLineColor(4);
+  	gr3->SetLineWidth(2);
+  	gr3->SetFillStyle(0);
+	gr3->SetMarkerStyle(21);
+	gr3->SetMarkerSize(0);
+	mg->Add(gr3);
+ 
+   	mg->Draw("apl");
+	mg->SetTitle("Bateman Equation");
+	gr1->SetTitle("N1");
+  	mg->GetXaxis()->SetTitle("Time");
+  	mg->GetYaxis()->SetTitle("Number Of Nuclei");
+
+	TLegend *leg = new TLegend(0.1, 0.7, 0.3, 0.9);
+	leg->SetFillColor(0);
+	leg->SetHeader("Nuclei");
+	leg->AddEntry(gr1, "N1", "lp");
+	leg->AddEntry(gr2, "N2", "lp");
+	leg->AddEntry(gr3, "N3", "lp");
+	leg->Draw();;
+
+   	gPad->Update();
+   	gPad->Modified();
+		
+}
