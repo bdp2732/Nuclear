@@ -12,13 +12,11 @@ void bateman()
 	auto gr1 = new TGraph(  );
 	auto gr2 = new TGraph(  );
 	auto gr3 = new TGraph(  );
-	TCanvas *c1 = new TCanvas("c3","Bateman Equation",600, 400);
+	auto c1 = new TCanvas("c3","Bateman Equation",600, 400);
 	c1->SetGrid();
-
 
 	TMultiGraph *mg = new TMultiGraph();
 
-	const Int_t n1 = 10;
 
 	fstream file;
 
@@ -45,7 +43,6 @@ void bateman()
 	gr1->SetMarkerSize(0);
 	mg->Add(gr1);
 
-	const Int_t n2 =10;
 
 	file.open("data2.txt", ios::in);	
 		while(1)
@@ -67,7 +64,6 @@ void bateman()
 	gr2->SetMarkerSize(0);
 	mg->Add(gr2);
 
-	const Int_t n3 =10;
 
 	file.open("data3.txt", ios::in);
 		while(1)
@@ -101,9 +97,6 @@ void bateman()
 	leg->AddEntry(gr1, "N1", "lp");
 	leg->AddEntry(gr2, "N2", "lp");
 	leg->AddEntry(gr3, "N3", "lp");
-	leg->Draw();;
-
-   	gPad->Update();
-   	gPad->Modified();
+	leg->Draw();
 		
-}
+} 
