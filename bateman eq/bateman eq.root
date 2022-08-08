@@ -7,7 +7,7 @@ void bateman()
 	auto gr = new TGraph(  );
 	auto gr1 = new TGraph(  );
 	auto gr2 = new TGraph(  );
-	auto gr3 = new TGraph( );
+	auto gr3 = new TGraph(  );
   	gr1->SetTitle("N1");
   	gr2->SetTitle("N2");
   	gr3->SetTitle("N3");
